@@ -47,6 +47,9 @@ MultiLang/
 ├── greet.rs                   # Standalone Rust example
 ├── greet_rust.h               # C header for Rust FFI
 ├── main.c                     # Unified application entry point
+├── build.sh                   # Build script (finds CMake 3.28+)
+├── scripts/
+│   └── install-cmake.sh       # Install a user-local CMake if needed
 └── CMakeLists.txt             # Multi-language build configuration
 ````
 
@@ -123,21 +126,63 @@ The project demonstrates safe string exchange despite differing representations:
 
 ### Prerequisites
 
-* CMake 3.28+
+* **CMake 3.28+** (required by `CMakeLists.txt`)
 * C compiler (GCC or Clang)
 * C++ compiler (G++ or Clang++)
 * Rust toolchain (`rustc`, `cargo`)
 
-### Build Instructions
+Many Linux distributions ship an older CMake (for example, Debian 12 provides 3.25). If `cmake --version` reports less than 3.28, install a newer release before building.
+
+### Build from Source (Recommended)
+
+**From the project root:**
+
+### Build it
 
 ```bash
-mkdir cmake-build-debug
-cd cmake-build-debug
+./build.sh
+```
 
-cmake -DCMAKE_BUILD_TYPE=Debug ..
-cmake --build . --target MultiLang -j 12
+### Then run it
+```bash
+ ./build/MultiLang
+ ```
 
-./MultiLang
+
+`build.sh` configures and builds the project in `build/` using the first CMake it finds that meets the 3.28 requirement:
+
+1. `$CMAKE` (if set)
+2. `~/.local/cmake/bin/cmake` (user-local install)
+3. `cmake` on your `PATH`
+
+Optional environment variables:
+
+```bash
+BUILD_TYPE=Release ./build.sh    # default is Debug
+BUILD_DIR=cmake-build-debug ./build.sh
+JOBS=12 ./build.sh
+CMAKE=$HOME/.local/cmake/bin/cmake ./build.sh
+```
+
+### Installing CMake 3.28+
+
+If `./build.sh` reports that CMake 3.28+ is required, install a user-local release:
+
+```bash
+./scripts/install-cmake.sh
+./build.sh
+```
+
+This downloads the latest bundled CMake release (default: 4.3.3) into `~/.local/cmake/`. To use that `cmake` outside the build script, either set `CMAKE` as shown above or add `~/.local/cmake/bin` to your `PATH`.
+
+### Manual Build (Alternative)
+
+If you already have CMake 3.28+ on your `PATH`:
+
+```bash
+cmake -S . -B build -DCMAKE_BUILD_TYPE=Debug
+cmake --build build --target MultiLang -j 12
+./build/MultiLang
 ```
 
 ---

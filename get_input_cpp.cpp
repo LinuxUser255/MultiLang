@@ -3,6 +3,7 @@
 #include <iostream>
 #include <string>
 #include <cstring>
+#include <climits>
 
 // C-compatible function (stack-based, similar to get_input.c)
 extern "C" void ask_name_cpp(char *name, size_t size) {

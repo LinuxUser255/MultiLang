@@ -11,13 +11,11 @@
 // FUTURE LANGUAGE INTEGRATIONS
 // ============================================================================
 // Uncomment and implement as new languages are added:
-//
+//TODO: Julia is the next language to be integrated
+// #include "greet_julia.h"     // Julia with exportc
 // #include "greet_python.h"    // Python via C API or ctypes
 // #include "greet_go.h"        // Go via cgo
 // #include "greet_zig.h"       // Zig with C ABI
-// #include "greet_nim.h"       // Nim with exportc
-// #include "greet_d.h"         // D with extern(C)
-// #include "greet_swift.h"     // Swift with @_cdecl
 // #include "greet_kotlin.h"    // Kotlin/Native
 // #include "greet_assembly.h"  // Assembly routines
 // #include "greet_wasm.h"      // WebAssembly modules
