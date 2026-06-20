@@ -21,6 +21,7 @@ Rather than treating each language in isolation, the project shows how they can 
 
 ### Planned / Future
 - Python (via C API, `ctypes`, or `cffi`)
+- Julia
 - Go (via `cgo`)
 - Assembly (performance-critical sections)
 - JavaScript / TypeScript (Node.js native modules)
