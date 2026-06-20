@@ -161,3 +161,4 @@
 | After `ask_name_malloc()` | `name` + `heap_name` pointer | 100 bytes allocated |
 | After `free_name()` | `name` + `heap_name` pointer | **Freed** ✓ |
 | End | **Auto-freed** ✓ | Empty |
+

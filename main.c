@@ -75,6 +75,15 @@ int main(void) {
     // Uncomment sections as new languages are integrated:
 
     /*
+
+    // ========== JULIA VERSION ==========
+    printf("--- JULIA IMPLEMENTATION ---\n\n");
+
+    printf("6. Julia version:\n");
+    char julia_name[100];
+    ask_name_julia(julia_name, sizeof(julia_name));
+    printf("Julia returned: %s\n\n", julia_name);
+
     // ========== PYTHON VERSION ==========
     printf("--- PYTHON IMPLEMENTATION ---\n\n");
 
